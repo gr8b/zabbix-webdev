@@ -1,16 +1,3 @@
-# Available configurations:
-# docker-compose --profile apache --profile phpfpm74 --profile mysql up
-# docker-compose --profile apache --profile phpfpm80 --profile mysql up
-# docker-compose --profile apache --profile phpfpm83 --profile mysql up
-# docker-compose --profile nginx --profile phpfpm74 --profile mysql up
-# docker-compose --profile nginx --profile phpfpm80 --profile mysql up
-# docker-compose --profile nginx --profile phpfpm83 --profile mysql up
-# docker-compose --profile apache --profile phpfpm74 --profile mariadb up
-# docker-compose --profile apache --profile phpfpm80 --profile mariadb up
-# docker-compose --profile apache --profile phpfpm83 --profile mariadb up
-# docker-compose --profile nginx --profile phpfpm74 --profile mariadb up
-# docker-compose --profile nginx --profile phpfpm80 --profile mariadb up
-# docker-compose --profile nginx --profile phpfpm83 --profile mariadb up
 services:
   apache:
     profiles:

@@ -1,5 +1,14 @@
 ### Web development environment
 
+Clone Zabbix [repository](https://git.zabbix.com/scm/zbx/zabbix.git) to directory `zabbix` in user home directory.
+As persistent storage of database containers `./docker-volume` directory is used.
+Web server and PHP log files are stored in directory `zabbix/log` in user home directory.\
+To define custom directories copy `.env.example` file to `.env` and make required changes to fit your needs.
+
+### Start development environment
+
+To start required environment use `--profile` options from table below.
+
 |Profile key|Hostname|Service|Image|
 |-----------|--------|-------|-----|
 |apache  ||web server apache|[httpd:alpine](https://hub.docker.com/_/httpd)|
