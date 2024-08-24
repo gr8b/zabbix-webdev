@@ -2,15 +2,15 @@
 
 |Profile key|Hostname|Service|Image|
 |-----------|--------|-------|-----|
-|apache  ||web server apache|httpd:alpine|
-|nginx   ||web server nginx|nginx:alpine|
-|phpfpm56|php|php 5.6|Dockerfile/php5.6.Dockerfile|
-|phpfpm74|php|php 7.4|Dockerfile/php7.4.Dockerfile|
-|phpfpm80|php|php 8.0|Dockerfile/php8.0.Dockerfile|
-|phpfpm83|php|php 8.3|Dockerfile/php8.3.Dockerfile|
-|mariadb |db |database mariadb|mariadb:lts|
-|mysql   |db |database mysql 8.2|mysql:8.2|
-|mysql-legacy|db |database mysql 5.7|mysql:5.7|
+|apache  ||web server apache|[httpd:alpine](https://hub.docker.com/_/httpd)|
+|nginx   ||web server nginx|[nginx:alpine](https://hub.docker.com/_/nginx)|
+|phpfpm56|php|php 5.6|[Dockerfile/php5.6.Dockerfile](./Dockerfile/php5.6.Dockerfile)|
+|phpfpm74|php|php 7.4|[Dockerfile/php7.4.Dockerfile](./Dockerfile/php7.4.Dockerfile)|
+|phpfpm80|php|php 8.0|[Dockerfile/php8.0.Dockerfile](./Dockerfile/php8.0.Dockerfile)|
+|phpfpm83|php|php 8.3|[Dockerfile/php8.3.Dockerfile](./Dockerfile/php8.3.Dockerfile)|
+|mariadb |db |database mariadb|[mariadb:lts](https://hub.docker.com/_/mariadb)|
+|mysql   |db |database mysql 8.2|[mysql:8.2](https://hub.docker.com/_/mysql)|
+|mysql-legacy|db |database mysql 5.7|[mysql:5.7](https://hub.docker.com/_/mysql)|
 |postgres|db |_(TBD)_||
 |saml    |saml|_(TBD)_||
 |ldap    |ldap|_(TBD)_||
