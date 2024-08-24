@@ -1,0 +1,10 @@
+.env
+# Ignore persisten data directory
+docker-volume/*
+docker-volume/mysql/*
+docker-volume/mariadb/*
+docker-volume/postgres/*
+!docker-volume/
+!docker-volume/mysql/
+!docker-volume/mariadb/
+!docker-volume/postgres/
