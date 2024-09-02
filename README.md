@@ -30,6 +30,23 @@ Example: _start nginx webserver with php 8.3 and mysql 8.2_
 docker-compose --profile nginx --profile phpfpm83 --profile mysql up
 ```
 
+### XDebug
+
+To enable xdebug add `pathMappings` to VSC configuration `launch.json` file, example:
+```json
+"configurations": [
+    {
+        "name": "Listen for Xdebug",
+        "type": "php",
+        "request": "launch",
+        "port": 9003,
+        "pathMappings": {
+            "/var/www/html": "${workspaceRoot}/../"
+        }
+    }
+]
+```
+
 ### Legacy frontend version support
 
 For Zabbix version up to 4.4 PHP 5.6 and mysql 5.7 are required. To start legacy dev environment run:
