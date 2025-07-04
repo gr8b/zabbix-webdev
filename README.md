@@ -28,6 +28,7 @@ Example: _start nginx webserver with php 8.3 and mysql 8.2_
 
 ```sh
 docker-compose --profile nginx --profile phpfpm83 --profile mysql up
+docker-compose --profile apache --profile phpfpm83 --profile mysql up
 ```
 
 ### XDebug
@@ -53,4 +54,11 @@ For Zabbix version up to 4.4 PHP 5.6 and mysql 5.7 are required. To start legacy
 
 ```sh
 docker-compose --profile nginx --profile phpfpm56 --profile mysql-legacy up
+```
+
+### Docker
+
+```sh
+brew install docker colima
+brew install docker-compose
 ```

@@ -24,8 +24,9 @@ RUN docker-php-ext-configure gettext --with-gettext \
     && docker-php-ext-install -j$(nproc) gettext
 
 RUN apt-get update && \
-    apt-get install libldap2-dev -y && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    apt-get install -y libldap2-dev libssl-dev && \
+    LIBDIR=lib/$(dpkg-architecture -qDEB_HOST_GNU_CPU)-linux-gnu && \
+    docker-php-ext-configure ldap --with-libdir=$LIBDIR && \
     docker-php-ext-install ldap
 
 RUN docker-php-ext-install -j$(nproc) mysqli
