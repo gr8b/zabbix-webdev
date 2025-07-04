@@ -113,7 +113,7 @@ services:
     environment:
       MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
     volumes:
-      - "${VOLUME_ROOT_DIR:-./docker-volume}/mariadb:/var/lib/mysql"
+      - mariadb_volume:/var/lib/mysql
     networks:
       - internal
 
@@ -128,7 +128,7 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - "${VOLUME_ROOT_DIR:-./docker-volume}/mysql:/var/lib/mysql"
+      - mysql_volume:/var/lib/mysql
     networks:
       - internal
 
@@ -143,10 +143,15 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - "${VOLUME_ROOT_DIR:-./docker-volume}/mysql-legacy:/var/lib/mysql"
+      - mysql_legacy:/var/lib/mysql
     networks:
       - internal
 
 networks:
   internal:
     driver: bridge
+
+volumes:
+  mysql_volume:
+  mysql_legacy:
+  mariadb_volume:
