@@ -4,7 +4,8 @@ RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
            -e 's|security.debian.org|archive.debian.org/|g' \
            -e '/stretch-updates/d' /etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y libfreetype6-dev libgd-dev
+RUN apt-get update -o Acquire::Check-Valid-Until=false && \
+    apt-get install -y --allow-unauthenticated libfreetype6-dev libgd-dev
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr
 RUN docker-php-ext-install gd
 
@@ -16,8 +17,8 @@ RUN docker-php-ext-configure ctype --enable-ctype && docker-php-ext-install -j$(
 RUN docker-php-ext-configure sockets --enable-sockets && docker-php-ext-install -j$(nproc) sockets
 RUN docker-php-ext-configure gettext --with-gettext && docker-php-ext-install -j$(nproc) gettext
 
-RUN apt-get update && \
-    apt-get install -y libldap2-dev libssl-dev && \
+RUN apt-get update -o Acquire::Check-Valid-Until=false && \
+    apt-get install -y --allow-unauthenticated libldap2-dev libssl-dev && \
     LIBDIR=lib/$(dpkg-architecture -qDEB_HOST_GNU_CPU)-linux-gnu && \
     docker-php-ext-configure ldap --with-libdir=$LIBDIR && \
     docker-php-ext-install ldap
@@ -25,7 +26,7 @@ RUN apt-get update && \
 RUN docker-php-ext-install -j$(nproc) mysqli mysql
 RUN docker-php-ext-enable mysql
 
-RUN apt-get install -y libpq-dev && docker-php-ext-install pgsql
+RUN apt-get install -y --allow-unauthenticated libpq-dev && docker-php-ext-install pgsql
 
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
     && sed -i 's/post_max_size = 8M/post_max_size = 128M/g' /usr/local/etc/php/php.ini \
@@ -34,7 +35,7 @@ RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
     && sed -i 's/;date\.timezone =/date\.timezone = "Europe\/Riga"/' /usr/local/etc/php/php.ini \
     && echo "always_populate_raw_post_data = -1" >> /usr/local/etc/php/php.ini
 
-RUN apt-get update && apt-get install -y locales
+RUN apt-get install -y --allow-unauthenticated locales
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
