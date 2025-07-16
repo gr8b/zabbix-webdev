@@ -7,7 +7,7 @@
 #
 
 _get_compose_dir() {
-    echo "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    echo "$HOME/Documents/www/personal/gr8b/zabbix-webdev"
 }
 
 # Docker Compose alias
@@ -35,7 +35,7 @@ envup() {
         detach="-d"
         shift
     fi
-    
+
     if [ $# -eq 0 ]; then
         echo "Usage: envup [-d|--detach] <service1> <service2> ... <serviceN>"
         echo "Supported services:"
@@ -58,13 +58,13 @@ envup() {
 # Example: php56 -v script.php
 php56() {
     source "$(_get_compose_dir)/.env"
-    
+
     if ! dc ps phpfpm56 | grep -q "Up"; then
         echo "Error: phpfpm56 service is not running"
         echo "Start it first with: envup phpfpm56"
         return 1
     fi
-    
+
     dc exec phpfpm56 php -d variables_order=EGPCS -d error_reporting=E_ALL -d log_errors=On "$@"
 }
 
@@ -73,13 +73,13 @@ php56() {
 # Example: php74 -v script.php
 php74() {
     source "$(_get_compose_dir)/.env"
-    
+
     if ! dc ps phpfpm74 | grep -q "Up"; then
         echo "Error: phpfpm74 service is not running"
         echo "Start it first with: envup phpfpm74"
         return 1
     fi
-    
+
     dc exec phpfpm74 php -d variables_order=EGPCS -d error_reporting=E_ALL -d log_errors=On "$@"
 }
 
@@ -88,12 +88,24 @@ php74() {
 # Example: php83 -v script.php
 php83() {
     source "$(_get_compose_dir)/.env"
+
+    if ! dc ps phpfpm83 | grep -q "Up"; then
+        echo "Error: phpfpm83 service is not running"
+        echo "Start it first with: envup phpfpm83"
+        return 1
+    fi
+
+    dc exec phpfpm83 php -d variables_order=EGPCS -d error_reporting=E_ALL -d log_errors=On "$@"
+}
+
+composer() {
+    source "$(_get_compose_dir)/.env"
     
     if ! dc ps phpfpm83 | grep -q "Up"; then
         echo "Error: phpfpm83 service is not running"
         echo "Start it first with: envup phpfpm83"
         return 1
     fi
-    
-    dc exec phpfpm83 php -d variables_order=EGPCS -d error_reporting=E_ALL -d log_errors=On "$@"
+
+    dc exec phpfpm83 composer "$@"
 }
