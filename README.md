@@ -61,4 +61,5 @@ docker-compose --profile nginx --profile phpfpm56 --profile mysql-legacy up
 ```sh
 brew install docker colima
 brew install docker-compose
+colima start --memory 12  #  Start Colima VM with 12 GB of RAM for use by containers
 ```
